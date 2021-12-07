@@ -451,7 +451,7 @@ return function (App $app) {
                 }
             }else{
                 $rsp["error"] = false;
-                $rsp['message'] = "All of those fields cant empty" ;
+                $rsp['message'] = "Tidak boleh ada field yang kosong" ;
             }
                 return $response
                 ->withStatus(201)
@@ -477,7 +477,7 @@ return function (App $app) {
         })->add($cekAPIKey);
 
 
-        //Daerah
+        //Kampus
         $app->get("/kampus/", function (Request $request, Response $response){
             $sql = "SELECT id_kampus, namaKampus, alamatKampus, namaKota, namaKecamatan, namaKelurahan
             FROM kampus
@@ -586,7 +586,7 @@ return function (App $app) {
                 }
             }else{
                 $rsp["error"] = false;
-                $rsp['message'] = "All of those fields cant empty" ;
+                $rsp['message'] = "Tidak boleh ada field yang kosong" ;
             }
                 return $response
                 ->withStatus(201)
