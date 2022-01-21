@@ -328,7 +328,7 @@ return function (App $app) {
                 }
             }else{
                 $rsp["error"] = false;
-                $rsp['message'] = "All of those fields cant empty" ;
+                $rsp['message'] = "Tidak Boleh Ada Field Yang Kosong" ;
             }
                 return $response
                 ->withStatus(201)
@@ -392,7 +392,7 @@ return function (App $app) {
             $stmt->execute();
             $result = $stmt->fetchAll();
             if($result==null) {
-                return $this->response->withJson(['status' => 'error', 'message' => 'Kecamatan Not Found.'],200); 
+                return $this->response->withJson(['status' => 'error', 'message' => 'Kelurahan Not Found.'],200); 
             }
             return $response->withJson(["status" => "success", "data" => $result], 
         200);
