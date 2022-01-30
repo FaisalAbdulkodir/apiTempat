@@ -45,18 +45,16 @@ return function (App $app) {
     });
 
     // ini untuk register
-    $app->post('/register', function (Request $request, Response $response, array $args) {
+    $app->post('/register/', function (Request $request, Response $response, array $args) {
         $input = $request->getParsedBody();
         $username=trim(strip_tags($input['username']));
         $email=trim(strip_tags($input['email']));
-        // $api_key=trim(strip_tags($input['api_key']));
         $password=trim(strip_tags($input['password']));
-        $sql = "INSERT INTO user(username, api_key,  password) 
-                VALUES(:username, :api_key,  :password)";
+        $sql = "INSERT INTO user(username, email,  password) 
+                VALUES(:username, :email,  :password)";
         $sth = $this->db->prepare($sql);
-        $sth->bindParam("username", $username);;
-        $sth->bindParam("email", $email);;
-        // $sth->bindParam("api_key", $api_key);
+        $sth->bindParam("username", $username);
+        $sth->bindParam("email", $email);
         $sth->bindParam("password", $password); 
         $StatusInsert=$sth->execute();
         if($StatusInsert){
@@ -65,11 +63,13 @@ return function (App $app) {
             $token = array(
                 'id_user' =>  $id_user, 
                 'username' => $username
+                
             );
             $token = JWT::encode($token, $settings['jwt']['secret'], "HS256");
             $dataUser=array(
-                'id$id_user'=> $id_user,
+                'id_user'=> $id_user,
                 'username'=> $username
+               
                 );
             return $this->response->withJson(['status' => 'success','data'=>$dataUser, 'token'=>$token],200); 
         } else {

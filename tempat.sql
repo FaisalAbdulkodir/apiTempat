@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2021 at 03:12 PM
+-- Generation Time: Jan 30, 2022 at 02:29 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -42,7 +42,17 @@ CREATE TABLE `kampus` (
 
 INSERT INTO `kampus` (`id_kampus`, `namaKampus`, `alamatKampus`, `id_kota`, `id_kecamatan`, `id_kelurahan`) VALUES
 (5, 'Politeknik Pos Indonesia', 'Jl. Sarimanah teuing nu belah mana', 1, 1, 1),
-(6, 'UGM ', 'Jl. Jogja we pokoknamah', 2, 2, 2);
+(6, 'Universigat Gadjah Mada', 'Bulaksumur', 5, 8, 9),
+(12, 'Universigat Airlangga', 'Jl.Airlangga', 6, 6, 8),
+(13, 'Universitar Hasanudin', 'Jl.Perintis Kemerdekaan', 8, 9, 10),
+(14, 'Universitar Andalas', 'Jl.Andalas', 9, 10, 11),
+(15, 'Universitar Padjajaran', 'Jl.Bandung Sumedang', 10, 12, 12),
+(16, 'Universitar Diponegoro', 'Jl.Prof Sudarto', 11, 13, 13),
+(17, 'Universitar Sriwijaya', 'Jl.Masjid Al Gazali', 12, 14, 14),
+(18, 'Universitar Lambung Mangkurat', 'Jl.Brigjen H Hasan', 13, 15, 15),
+(19, 'Universitar Pendidikan Indones', 'Jl.Dr.Setiabudi', 1, 1, 16),
+(20, 'Universitar Negeri Surabaya', 'Jl.Lidah Weta', 6, 16, 17),
+(21, 'Insitu Teknologi Bandung', 'Jl.Ganesa', 1, 17, 18);
 
 -- --------------------------------------------------------
 
@@ -64,7 +74,17 @@ CREATE TABLE `kecamatan` (
 INSERT INTO `kecamatan` (`id_kecamatan`, `kode_pos`, `namaKecamatan`, `id_kota`) VALUES
 (1, 40151, 'Sukasari', 1),
 (2, 55211, 'Danurejan', 2),
-(4, 40255, 'Regol', 1);
+(4, 40255, 'Regol', 1),
+(6, 4100, 'Gubeng', 6),
+(8, 42000, 'Depok', 5),
+(9, 43000, 'Tamalanrea', 8),
+(10, 44000, 'Pauh', 9),
+(12, 45000, 'Jatinangor', 10),
+(13, 46000, 'Tembalang', 11),
+(14, 47000, 'Ilir Bar.I', 12),
+(15, 48000, 'Banjarmasin Utara', 13),
+(16, 41100, 'Lakarsantri', 6),
+(17, 41200, 'Coblong', 1);
 
 -- --------------------------------------------------------
 
@@ -86,7 +106,18 @@ CREATE TABLE `kelurahan` (
 INSERT INTO `kelurahan` (`id_kelurahan`, `namaKelurahan`, `id_kecamatan`, `id_kota`) VALUES
 (1, 'Sarijadi', 1, 1),
 (2, 'Bausasran', 2, 2),
-(4, 'dasd', 1, 1);
+(4, 'Ciseureuh', 4, 1),
+(8, 'Airlangga', 6, 6),
+(9, 'Caturtunggal', 8, 5),
+(10, 'Tamalanrea Indah', 9, 8),
+(11, 'Limau Manis', 10, 9),
+(12, 'Hegarmanah', 12, 10),
+(13, 'Tembakau', 13, 11),
+(14, 'Bukit Lama', 14, 12),
+(15, 'Pangeran', 15, 13),
+(16, 'Isola', 1, 1),
+(17, 'Lidah Wetan', 16, 6),
+(18, 'Siliwangi', 17, 1);
 
 -- --------------------------------------------------------
 
@@ -105,7 +136,15 @@ CREATE TABLE `kota` (
 
 INSERT INTO `kota` (`id_kota`, `namaKota`) VALUES
 (1, 'Bandung'),
-(2, 'Jogja');
+(2, 'Yogyakarta'),
+(5, 'Sleman'),
+(6, 'Surabaya'),
+(8, 'Makasar'),
+(9, 'Padang'),
+(10, 'Sumedang'),
+(11, 'Semarang'),
+(12, 'Palembang'),
+(13, 'Banjarmasin');
 
 -- --------------------------------------------------------
 
@@ -127,7 +166,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `api_key`, `hit`) VALUES
-(1, 'ucup', 'ucup@gmail.com', '123', '123', 80);
+(1, 'ucup', 'ucup@gmail.com', '123', '123', 241),
+(2, 'faisal', 'faisal@gmail.com', '123', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -177,31 +217,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `kampus`
 --
 ALTER TABLE `kampus`
-  MODIFY `id_kampus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_kampus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `kecamatan`
 --
 ALTER TABLE `kecamatan`
-  MODIFY `id_kecamatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kecamatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `kelurahan`
 --
 ALTER TABLE `kelurahan`
-  MODIFY `id_kelurahan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kelurahan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `kota`
 --
 ALTER TABLE `kota`
-  MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
